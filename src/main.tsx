@@ -8,6 +8,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import First from "./pages/first/First.tsx";
 import Second from "./pages/second/Second.tsx";
 import Third from "./pages/third/Third.tsx";
+import Layout from "./pages/Layout.tsx";
 
 async function deferRender() {
   if (process.env.NODE_ENV !== 'development') {
@@ -24,20 +25,26 @@ const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Layout />,
+    children:[
+      {
+        path: "/",
+        element:<App/>,
+      },
+      {
+        path: "/first",
+        element:<First/>,
+      },
+      {
+        path: "/second",
+        element: <Second />,
+      },
+      {
+        path: "/third",
+        element: <Third />,
+      }
+    ]
   },
-  {
-    path: "/first",
-    element:<First/>,
-  },
-  {
-    path: "/second",
-    element: <Second />,
-  },
-  {
-    path: "/third",
-    element: <Third />,
-  }
 ],{
   basename: "/msw-v2/",
 });
