@@ -5,6 +5,9 @@ import './index.css'
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import First from "./pages/first/First.tsx";
+import Second from "./pages/second/Second.tsx";
+import Third from "./pages/third/Third.tsx";
 
 async function deferRender() {
   if (process.env.NODE_ENV !== 'development') {
@@ -23,6 +26,18 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
   },
+  {
+    path: "/first",
+    element:<First/>,
+  },
+  {
+    path: "/second",
+    element: <Second />,
+  },
+  {
+    path: "/third",
+    element: <Third />,
+  }
 ],{
   basename: "/msw-v2/",
 });
